@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-title bg-1">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+          <span class="text-white">Our blog</span>
+          <h1 class="text-capitalize mb-5 text-lg">{{article.title}}</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section blog-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+	<div class="col-lg-12 mb-5">
+		<div class="single-blog-item">
+			<img src="{{article.image.url}}" alt="" class="img-fluid">
+
+			<div class="blog-item-content mt-5">
+				<div class="blog-item-meta mb-3">
+                  <hr>
+					<span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> {{article.created_at}}</span>
+				</div>
+
+				<h2 class="mb-4 text-md"><a href="blog-single.html">{{article.title}}</a></h2>
+
+				{{article.content|safe}}
+
+			</div>
+		</div>
+	</div>
+
+
+</div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-wrap pl-lg-4 mt-5 mt-lg-0">
+	<div class="sidebar-widget search  mb-3 ">
+		<h5>Search Here</h5>
+		<form action="#" class="search-form">
+			<input type="text" class="form-control" placeholder="search">
+			<i class="ti-search"></i>
+		</form>
+	</div>
+
+	<div class="sidebar-widget tags mb-3">
+		<h5 class="mb-4">Tags</h5>
+		{% if article.tags.all %}
+			{% for tag in article.tags.all %}
+				<a  href="{% url 'articles' %}?tag={{tag.name}}">{{tag.name}}</a>
+			{% endfor %}
+		{% endif %}
+	</div>
+
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+
