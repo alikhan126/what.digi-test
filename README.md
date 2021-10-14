@@ -23,3 +23,4 @@ python manage.py migrate
 ```python
 python manage.py runserver
 ```
+And then navigate **http://127.0.0.1:8000/**
